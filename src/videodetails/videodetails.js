@@ -1,5 +1,6 @@
 import React from 'react'
 import {useVideo} from "../Context/videoContext"
+import "./videodetails.css"
 import axios from "axios"
 import { useParams } from "react-router-dom";
 import {useState ,useEffect} from "react"
@@ -7,6 +8,7 @@ import ReactPlayer from "react-player";
 import { useHistory } from '../Context/historyContext';
 import { useWatchLater } from '../Context/watchContext';
 import { useLikevideo } from '../Context/likevideoContext';
+import Navbar from "../Component/Navbar"
 
 const Videodetails = () => {
 
@@ -93,17 +95,20 @@ const addTohistory = () => {
 
     return (
         <>
-            <div style={{textAlign:"center"}}class="productdetail-container">
-                <div className="productdetail-img">
+            <>
+            <Navbar />
+            <div className="video-container">
+                <div>
                     <ReactPlayer url={video.videourl} controls onPlay={()=>addTohistory()}/>
                 </div>
-                <div className="productdetail-info">
+                <div>
                     <h4>{video.name}</h4>
                     <p>{video.channelname}</p>
                     <button onClick={()=>addTowatchLater()}>watch Later</button>
                     <button onClick={()=>addTolikevideo()}>Like</button>
                 </div>
-            </div>
+                </div>
+            </>
         </>
     )
 }
