@@ -12,15 +12,15 @@ const History = () => {
         return (
             <>
                 <div className="col">
-                    <Link to={`videos/${video._id}`}>
+                    <Link to={`/videos/${video._id}`}>
                         <div style={{ width: "560", height: "315" }}>
                             <img src={video.imageurl} style={{ width: "100%" }} />
                         </div>
                     </Link>
                     <div className="video-text">
-                        <div className="video-logo">
+                        {/* <div className="video-logo">
                             <img src={video.channellogourl} />
-                        </div>
+                        </div> */}
                         <div className="video-details">
                             <p>{video.name}</p>
                             <small>{video.channelname}</small>

@@ -16,7 +16,7 @@ export const VideoProvider = ({ children }) => {
     useEffect(() => {
         (async () => {
             const { videos: data } = await axios
-                .get("https://videolibrary.nrusingha.repl.co/videos")
+                .get("https://shoptube-backend.herokuapp.com/videos")
                 .then((response) => {
                     return response.data;
                 });

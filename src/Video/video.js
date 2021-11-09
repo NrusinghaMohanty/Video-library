@@ -15,20 +15,20 @@ const Video = () => {
             <>
                 <div className="col">
                     <Link to={`videos/${video._id}`}>
-                        <div style={{ width: "560", height: "315" }}>
-                            <img src={video.imageurl} style={{ width: "100%" }} />
+                        <div className="video-img">
+                            <img src={video.imageurl}  />
                         </div>
                     </Link>
                     <div className="video-text">
-                        <div className="video-logo">
-                            <img src={video.channellogourl} />
-                        </div>
+                        {/* <div className="video-logo">
+                            <img src={video.channellogourl} className="logo-img"/>
+                        </div> */}
                         <div className="video-details">
                             <p>{video.name}</p>
                             <small>{video.channelname}</small>
                             <p>{video.date}</p>
                         </div>
-                        <div>
+                        <div className="ellipse">
                             <i className="fas fa-ellipsis-v"></i>
                         </div>
                     </div>

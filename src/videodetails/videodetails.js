@@ -22,7 +22,7 @@ const Videodetails = () => {
     useEffect(() => {
         (async () => {
             const { video: data } = await axios
-                .get(`https://videolibrary.nrusingha.repl.co/videos/${videoId}`)
+                .get(`https://shoptube-backend.herokuapp.com/videos/${videoId}`)
         .then((response) => {
                     console.log(response.data)
                     return response.data;
@@ -34,7 +34,7 @@ const Videodetails = () => {
 const addTohistory = () => {
     (async () => {
         const { success ,history : data} = await axios
-             .post("https://videolibrary.nrusingha.repl.co/history",{
+             .post("https://shoptube-backend.herokuapp.com/history",{
                 _id: video._id,
                 name: video.name,
                 imageurl: video.imageurl,
@@ -58,7 +58,7 @@ const addTohistory = () => {
     const addTowatchLater = () => {
         (async () => {
             const { watchLatervideos : data} = await axios
-                 .post("https://videolibrary.nrusingha.repl.co/watchlater",{
+                 .post("https://shoptube-backend.herokuapp.com/watchlater",{
                     _id: video._id,
                     name: video.name,
                     imageurl: video.imageurl,
@@ -77,7 +77,7 @@ const addTohistory = () => {
     const addTolikevideo = () => {
         (async () => {
             const { success ,likeVideos : data} = await axios
-                 .post("https://videolibrary.nrusingha.repl.co/likevideo",{
+                 .post("https://shoptube-backend.herokuapp.com/likevideo",{
                     _id: video._id,
                     name: video.name,
                     imageurl: video.imageurl,

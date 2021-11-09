@@ -15,7 +15,7 @@ export function HistoryProvider({children}){
     useEffect(() => {
         (async () => {
             const { success, history: data } = await axios
-                .get("https://videolibrary.nrusingha.repl.co/history")
+                .get("https://shoptube-backend.herokuapp.com/history")
                 .then((response) => {
                     return response.data;
                 });

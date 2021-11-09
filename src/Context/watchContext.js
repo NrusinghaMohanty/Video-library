@@ -15,7 +15,7 @@ export function WatchLaterProvider({children}){
     useEffect(() => {
         (async () => {
             const { watchLatervideos: data } = await axios
-                .get("https://videolibrary.nrusingha.repl.co/watchlater")
+                .get("https://shoptube-backend.herokuapp.com/watchlater")
                 .then((response) => {
                     return response.data;
                 });

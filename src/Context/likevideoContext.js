@@ -15,7 +15,7 @@ export function LikevideoProvider({children}){
     useEffect(() => {
         (async () => {
             const { likeVideos: data } = await axios
-                .get("https://videolibrary.nrusingha.repl.co/likevideo")
+                .get("https://shoptube-backend.herokuapp.com/likevideo")
                 .then((response) => {
                     return response.data;
                 });
