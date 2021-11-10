@@ -1,12 +1,28 @@
 import React from 'react'
-import ReactPlayer from 'react-player'
 import { useWatchLater } from '../Context/watchContext'
 import "./watchLater.css"
 import { Link } from "react-router-dom"
 import Navbar from "../Component/Navbar"
+import axios from "axios"
 
 const WatchLater = () => {
-    const {videoInwatchLater}= useWatchLater()
+    const {videoInwatchLater,watchLaterdispatch}= useWatchLater()
+
+    const removefromwatchlater = (id) => {
+        (async () => {
+          const { success } = await axios
+            .delete(`https://shoptube-backend.herokuapp.com/watchlater/${id}`)
+            .then((response) => {
+              return response.data;
+            });
+          if (success) {
+            watchLaterdispatch({ type: "REMOVE", payload: id });
+          } else {
+            console.log("error occured while removing video");
+          }
+        })();
+      };
+
 
     const showWatchLater = (video) =>{
         return (
@@ -28,6 +44,7 @@ const WatchLater = () => {
                     </div>
                     <div>
                         <i className="fas fa-ellipsis-v"></i>
+                        <button onClick={()=>removefromwatchlater(video._id)}>Remove</button>
                     </div>
                 </div>
             </div>

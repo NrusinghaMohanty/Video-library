@@ -1,6 +1,45 @@
-.video-container {
+/* .video-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1.5rem;
+    margin: 1rem auto;
+    background-color: #000;
 }
+.video-container > div {
+    
+}
+.video-player {
+    width: 100%;
+}
+.video-details-btn {
+   margin: 1rem 0;
+} */
+
+.video-container {
+    max-width: 650px;
+    margin: 2rem auto;
+    text-align: center;
+}
+.video-details-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.video-details-btn > div {
+    margin: 1rem 0;
+}
+.video-details-btn > div > p{
+    text-align: start;
+}
+.video-details-btn > div >button {
+    outline: none;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    margin: 0.5rem;
+ }
+.video-details-btn > div > button:hover {
+    background-color: #ccc;
+    cursor: pointer;
+ }

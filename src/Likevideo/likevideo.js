@@ -1,12 +1,28 @@
 import React from 'react'
-import ReactPlayer from "react-player"
 import { useLikevideo } from "../Context/likevideoContext"
 import "./likevideo.css"
 import { Link } from "react-router-dom";
 import Navbar from "../Component/Navbar"
+import axios from "axios"
 
 const Likevideo = () => {
     const { videoInlikevideo } = useLikevideo()
+    const {likeVideodispatch} = useLikevideo()
+
+    const removefromlikedvideo = (id) => {
+        (async () => {
+          const { success } = await axios
+            .delete(`https://shoptube-backend.herokuapp.com/likedvideo/${id}`)
+            .then((response) => {
+              return response.data;
+            });
+          if (success) {
+            likeVideodispatch({ type: "REMOVE", payload: id });
+          } else {
+            console.log("error occured while removing video");
+          }
+        })();
+      };
 
     const showLikevideo = (video) => {
         return (
@@ -28,6 +44,7 @@ const Likevideo = () => {
                         </div>
                         <div>
                             <i className="fas fa-ellipsis-v"></i>
+                            <button onClick={()=>removefromlikedvideo(video._id)}>Remove</button>
                         </div>
                     </div>
                 </div>

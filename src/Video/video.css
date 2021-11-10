@@ -37,18 +37,18 @@ input {
 .video-img{
     height:10.5rem;
 }
-.video-img img{
+.video-img > img{
     width: 100%;
     max-height: 100%;
     min-width: 100%;
 }
 .video-text{
     display: flex;
-    
+    height: 8vh;
 }
-.video-logo {
+/* .video-logo { */
    /* flex-basis: 30%; */
-}
+/* } */
 .logo-img {
     /* border-radius: 50%; */
     width: 100%;

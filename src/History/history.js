@@ -1,12 +1,28 @@
 import React from 'react'
-import ReactPlayer from "react-player"
 import { useHistory } from '../Context/historyContext'
 import Navbar from "../Component/Navbar"
 import { Link } from "react-router-dom"
 import "./history.css";
+import axios from "axios"
 
 const History = () => {
     const { videoInhistory, historydispatch } = useHistory()
+
+    const removefromhistory = (id) => {
+        (async () => {
+          const { success } = await axios
+            .delete(`https://shoptube-backend.herokuapp.com/history/${id}`)
+            .then((response) => {
+              return response.data;
+            });
+          if (success) {
+            historydispatch({ type: "REMOVE", payload: id });
+          } else {
+            console.log("error occured while removing video");
+          }
+        })();
+      };
+
 
     const showHistory = (video) => {
         return (
@@ -28,6 +44,7 @@ const History = () => {
                         </div>
                         <div>
                             <i className="fas fa-ellipsis-v"></i>
+                            <button onClick={()=>removefromhistory(video._id)}>Remove</button>
                         </div>
                     </div>
                 </div>
