@@ -1,17 +1,9 @@
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    color:#fff;
-    background: #222;
-}
-
 nav{
     display: flex;
     align-items: center;
-    padding:1.2rem;
+    padding:2rem 1.2rem;
+    /* background-color: rgba(0, 0, 0, 0.80); */
+    background-color: #ddd;
 }
 .logo{
     flex:1;
@@ -23,7 +15,7 @@ nav{
     margin-right: 1rem;
 }
 .link{
-    color:white;
+    color:black;
     text-decoration: none;
     margin: 0 0.5rem;
 }

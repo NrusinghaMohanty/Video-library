@@ -1,4 +1,3 @@
-import React from "react"
 
 function likevideoHandler(state, action) {
     switch (action.type) {

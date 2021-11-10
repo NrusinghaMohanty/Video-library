@@ -10,7 +10,7 @@ const Navbar = () => {
         <>
         <nav>
         <div className="logo">
-            <h1>Shop-Tube</h1>
+            <h1>Travel-Tube</h1>
         </div>
         <div className="menu">
             <Link to="/" className="link">Home<AiOutlineHome className="link-icon"/></Link>

@@ -1,22 +1,20 @@
 import React from 'react'
 import { useVideo } from '../Context/videoContext'
-import { useState } from 'react';
 import "./video.css"
 import { Link } from "react-router-dom"
-import { HomeIcon } from '@material-ui/icons';
 import Navbar from "../Component/Navbar"
 
 const Video = () => {
-    const { videos, videodispatch } = useVideo();
+    const { videos } = useVideo();
 
-    const [show, setshow] = useState(false);
+    // const [show, setshow] = useState(false);
     function showallVideos(video) {
         return (
             <>
                 <div className="col">
-                    <Link to={`videos/${video._id}`}>
+                    <Link to={`/videos/${video._id}`}>
                         <div className="video-img">
-                            <img src={video.imageurl}  />
+                            <img src={video.imageurl} alt="not found" />
                         </div>
                     </Link>
                     <div className="video-text">
@@ -29,7 +27,7 @@ const Video = () => {
                             <p>{video.date}</p>
                         </div>
                         <div className="ellipse">
-                            <i className="fas fa-ellipsis-v"></i>
+                            {/* <i className="fas fa-ellipsis-v"></i> */}
                         </div>
                     </div>
                 </div>
@@ -43,7 +41,7 @@ const Video = () => {
                 <section>
                     <div className="row row-2">
                         <h1>All video</h1>
-                        <input placeholder="search....." />
+                        {/* <input placeholder="search....." /> */}
                     </div>
                     <div className="row">
                         {videos.map(showallVideos)}

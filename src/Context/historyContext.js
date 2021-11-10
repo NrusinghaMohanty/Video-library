@@ -19,8 +19,12 @@ export function HistoryProvider({children}){
                 .then((response) => {
                     return response.data;
                 });
-
-            historydispatch({ type: "fetch", payload: data });
+            if(success){
+             historydispatch({ type: "fetch", payload: data });
+            }
+            else{
+              console.log("error")
+            }
         })();
     }, []);
 

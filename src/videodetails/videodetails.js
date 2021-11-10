@@ -1,5 +1,4 @@
 import React from 'react'
-import { useVideo } from "../Context/videoContext"
 import "./videodetails.css"
 import axios from "axios"
 import { useParams } from "react-router-dom";
@@ -89,7 +88,10 @@ const Videodetails = () => {
         .then((response) => {
           return response.data;
         });
+        if (success)
       likeVideodispatch({ type: "ADD_TO_LIKEVIDEO", payload: data });
+      else
+      console.log("error")
     })()
   }
 

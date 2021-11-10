@@ -52,3 +52,15 @@ input {
 .video-text div i {
     padding:0.5rem 0.3rem;
 }
+.btnn {
+    outline: none;
+    border: none;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    margin: 0.5rem;
+ }
+.btnn:hover {
+    background-color: #ccc;
+    cursor: pointer;
+ }

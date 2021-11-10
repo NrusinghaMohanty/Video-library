@@ -30,7 +30,7 @@ const History = () => {
                 <div className="col">
                     <Link to={`/videos/${video._id}`}>
                         <div style={{ width: "560", height: "315" }}>
-                            <img src={video.imageurl} style={{ width: "100%" }} />
+                            <img src={video.imageurl} style={{ width: "100%" }} alt="not found" />
                         </div>
                     </Link>
                     <div className="video-text">
@@ -43,8 +43,8 @@ const History = () => {
                             <p>{video.date}</p>
                         </div>
                         <div>
-                            <i className="fas fa-ellipsis-v"></i>
-                            <button onClick={()=>removefromhistory(video._id)}>Remove</button>
+                            {/* <i className="fas fa-ellipsis-v"></i> */}
+                            <button onClick={()=>removefromhistory(video._id)} className="btnn">Remove</button>
                         </div>
                     </div>
                 </div>

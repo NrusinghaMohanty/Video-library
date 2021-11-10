@@ -1,4 +1,3 @@
-import React from "react"
 
 function historyHandler(state, action) {
     switch (action.type) {

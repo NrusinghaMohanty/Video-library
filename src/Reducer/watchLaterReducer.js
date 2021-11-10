@@ -1,4 +1,3 @@
-import React from "react"
 
 function watchLaterHandler(state, action) {
     switch (action.type) {
