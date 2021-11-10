@@ -10,10 +10,10 @@ const Navbar = () => {
         <>
         <nav>
         <div className="logo">
-            <h1>Travel-Tube</h1>
+            <Link to="/" className="home-link"><h1>Travel-Tube</h1></Link>
         </div>
         <div className="menu">
-            <Link to="/" className="link">Home<AiOutlineHome className="link-icon"/></Link>
+            <Link to="/videos" className="link">Home<AiOutlineHome className="link-icon"/></Link>
             <Link to="/likevideo" className="link">Likevideo<AiTwotoneLike className="link-icon"/></Link>
             <Link to="/watchlater" className="link">Watch Later<MdWatchLater className="link-icon"/></Link>
             <Link to="/history" className="link">History<FaHistory className="link-icon"/></Link>
