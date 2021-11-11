@@ -8,14 +8,16 @@ import { useHistory } from '../Context/historyContext';
 import { useWatchLater } from '../Context/watchContext';
 import { useLikevideo } from '../Context/likevideoContext';
 import Navbar from "../Component/Navbar"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Videodetails = () => {
 
   let { videoId } = useParams();
   const [video, setvideo] = useState({});
   const { historydispatch } = useHistory()
-  const { watchLaterdispatch } = useWatchLater()
-  const { likeVideodispatch } = useLikevideo()
+  const { watchLaterdispatch,videoInwatchLater } = useWatchLater()
+  const { likeVideodispatch,videoInlikevideo } = useLikevideo()
 
 
   useEffect(() => {
@@ -70,6 +72,7 @@ const Videodetails = () => {
           return response.data;
         });
       watchLaterdispatch({ type: "ADD_TO_WATCHLATER", payload: data });
+      toast("Your video is added to watch later")
     })()
   }
 
@@ -88,11 +91,20 @@ const Videodetails = () => {
         .then((response) => {
           return response.data;
         });
-        if (success)
-      likeVideodispatch({ type: "ADD_TO_LIKEVIDEO", payload: data });
-      else
-      console.log("error")
+      if (success) {
+        likeVideodispatch({ type: "ADD_TO_LIKEVIDEO", payload: data });
+        toast("Your Like video is added")
+      }
+      else {
+        console.log("error")
+      }
     })()
+  }
+  function isInWatchlater(id){
+    return videoInwatchLater.some(video=>video._id===id)
+  }
+  function isInlikevideo(id){
+    return videoInlikevideo.some(video=>video._id===id)
   }
 
   return (
@@ -109,8 +121,17 @@ const Videodetails = () => {
               <p>{video.channelname}</p>
             </div>
             <div>
-              <button onClick={() => addTowatchLater()}>watch Later</button>
-              <button onClick={() => addTolikevideo()}>Like</button>
+              <button onClick={() => addTowatchLater()} style={{background:isInWatchlater(video._id)?"#DD2476":"#ddd"}}>watch Later</button>
+              <button onClick={() => addTolikevideo()} style={{background:isInlikevideo(video._id)?"#DD2476":"#ddd"}}>Like</button>
+              <ToastContainer position="top-center"
+                autoClose={3000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover />
             </div>
           </div>
         </div>
