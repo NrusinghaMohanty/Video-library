@@ -1,13 +1,28 @@
 import React from 'react'
+import {useEffect} from "react"
 import { useVideo } from '../Context/videoContext'
 import "./video.css"
 import { Link } from "react-router-dom"
 import Navbar from "../Component/Navbar"
+import axios from "axios"
 
 const Video = () => {
-    const { videos } = useVideo();
+    const { videos,videodispatch } = useVideo();
 
     // const [show, setshow] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+            const { videos: data } = await axios
+                .get("https://shoptube-backend.herokuapp.com/videos")
+                .then((response) => {
+                    return response.data;
+                });
+              console.log("coming......")  
+            videodispatch({ type: "fetch", payload: data });
+        })();
+    }, [videodispatch]);
+
     function showallVideos(video) {
         return (
             <>

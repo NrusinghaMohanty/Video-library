@@ -1,4 +1,5 @@
 import React from 'react'
+import {useEffect} from "react"
 import { useLikevideo } from "../Context/likevideoContext"
 import "./likevideo.css"
 import { Link } from "react-router-dom";
@@ -8,6 +9,18 @@ import axios from "axios"
 const Likevideo = () => {
     const { videoInlikevideo } = useLikevideo()
     const {likeVideodispatch} = useLikevideo()
+
+    useEffect(() => {
+        (async () => {
+            const { likeVideos: data } = await axios
+                .get("https://shoptube-backend.herokuapp.com/likevideo")
+                .then((response) => {
+                    return response.data;
+                });
+            console.log(data)
+            likeVideodispatch({ type: "fetch", payload: data });
+        })();
+    }, [likeVideodispatch]);
 
     const removefromlikedvideo = (id) => {
         (async () => {
@@ -29,7 +42,7 @@ const Likevideo = () => {
             <>
                 <div className="col">
                     <Link to={`/videos/${video._id}`}>
-                        <div style={{ width: "560", height: "315" }}>
+                        <div style={{ width: "560", height: "315" }}className="iframe">
                             <img src={video.imageurl} style={{ width: "100%" }} alt="not found"/>
                         </div>
                     </Link>

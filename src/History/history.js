@@ -1,4 +1,5 @@
 import React from 'react'
+import {useEffect} from "react"
 import { useHistory } from '../Context/historyContext'
 import Navbar from "../Component/Navbar"
 import { Link } from "react-router-dom"
@@ -7,6 +8,22 @@ import axios from "axios"
 
 const History = () => {
     const { videoInhistory, historydispatch } = useHistory()
+
+    useEffect(() => {
+        (async () => {
+            const { success, history: data } = await axios
+                .get("https://shoptube-backend.herokuapp.com/history")
+                .then((response) => {
+                    return response.data;
+                });
+            if(success){
+             historydispatch({ type: "fetch", payload: data });
+            }
+            else{
+              console.log("error")
+            }
+        })();
+    }, [historydispatch]);
 
     const removefromhistory = (id) => {
         (async () => {

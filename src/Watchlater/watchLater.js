@@ -1,4 +1,5 @@
 import React from 'react'
+import {useEffect} from "react"
 import { useWatchLater } from '../Context/watchContext'
 import "./watchLater.css"
 import { Link } from "react-router-dom"
@@ -7,6 +8,18 @@ import axios from "axios"
 
 const WatchLater = () => {
     const {videoInwatchLater,watchLaterdispatch}= useWatchLater()
+
+    useEffect(() => {
+        (async () => {
+            const { watchLatervideos: data } = await axios
+                .get("https://shoptube-backend.herokuapp.com/watchlater")
+                .then((response) => {
+                    return response.data;
+                });
+
+            watchLaterdispatch({ type: "fetch", payload: data });
+        })();
+    }, [watchLaterdispatch]);
 
     const removefromwatchlater = (id) => {
         (async () => {
@@ -28,8 +41,8 @@ const WatchLater = () => {
         return (
             <>
             <div className="col">
-                <Link to={`/videos/${video._id}`}>
-                    <div style={{ width: "560", height: "315" }}>
+                <Link to={`/videos/${video._id}`} >
+                    <div style={{ width: "560", height: "315" }} className="iframe">
                         <img src={video.imageurl} style={{ width: "100%" }} alt="not found"/>
                     </div>
                 </Link>
